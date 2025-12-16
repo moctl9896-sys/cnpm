@@ -1,9 +1,12 @@
 from typing import Union
-
+from infrastructure.databases.postgres import test_connection
 from fastapi import FastAPI
 
 app = FastAPI()
 
+@app.on_event("startup")
+async def on_startup():
+    await test_connection()
 
 @app.get("/")
 def read_root():
