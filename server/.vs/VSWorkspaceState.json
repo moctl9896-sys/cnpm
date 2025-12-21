@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\infrastructure",
+    "\\src\\infrastructure\\databases",
+    "\\src\\infrastructure\\models",
+    "\\src\\__pycache__",
+    "\\venv"
+  ],
+  "SelectedNode": "\\src\\main.py",
+  "PreviewInSolutionExplorer": false
+}
