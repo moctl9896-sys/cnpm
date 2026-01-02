@@ -1,6 +1,6 @@
-//login
-import { setToken } from "../auth/token";
+import { setRole } from "../auth/userStore";
 
+//luu role
 export async function login(email, password) {
   const res = await fetch("/api/login", {
     method: "POST",
@@ -8,6 +8,8 @@ export async function login(email, password) {
     body: JSON.stringify({ email, password }),
   });
 
+  if (!res.ok) throw new Error("Login failed");
+
   const data = await res.json();
-  setToken(data.access_token);
+  setRole(data.role);
 }

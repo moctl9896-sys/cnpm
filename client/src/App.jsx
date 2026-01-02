@@ -2,6 +2,14 @@ import { useEffect, useState } from "react";
 import { useEffect, useState } from "react";
 import { apiFetch } from "./api/http";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+import AdminDashboard from "./pages/admin/Dashboard";
+import RecruiterDashboard from "./pages/recruiter/Dashboard";
+import CandidateDashboard from "./pages/candidate/Dashboard";
+import Login from "./pages/Login";
+
 function App() {
   const [data, setData] = useState(null);
 
@@ -35,4 +43,45 @@ function App() {
   );
 }
 
+
+
+//role
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute role="admin">
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/recruiter/dashboard"
+          element={
+            <ProtectedRoute role="recruiter">
+              <RecruiterDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/candidate/dashboard"
+          element={
+            <ProtectedRoute role="candidate">
+              <CandidateDashboard />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
 export default App;
+
