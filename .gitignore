@@ -1,0 +1,4 @@
+.vs/
+server/__pycache__/
+client/node_modules/
+.env
