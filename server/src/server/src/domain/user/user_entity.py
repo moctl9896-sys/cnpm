@@ -15,3 +15,7 @@ class User(Base):
         secondary=user_role,
         back_populates="users"
     )
+    admin_profile = relationship("Admin", back_populates="user", uselist=False)
+    student_profile = relationship("Student", back_populates="user", uselist=False)
+    recruiter_profile = relationship("Recruiter", back_populates="user", uselist=False)
+    mentor_profile = relationship("Mentor", back_populates="user", uselist=False)
